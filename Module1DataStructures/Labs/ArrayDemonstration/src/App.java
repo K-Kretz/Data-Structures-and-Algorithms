@@ -6,10 +6,13 @@ public class App {
         // set the values through the constructor
         students[0] = new Student(1,"John", 19);
         // TODO 1:  create other 4 object of student class and assign to the array Students
-
+        students[1] = new Student(2,"A", 22);
+        students[2] = new Student(3,"B", 12);
+        students[3] = new Student(4,"C", 21);
+        students[4] = new Student(5,"D", 15);
         // TODO 2: Uncomment the method call once you have completed the mentioned tasks
         // int IndexToDelete = "PASS_HERE_INDEX_TO_BE_DELETED";
-        //removeElement(IndexToDelete, students);
+        // removeElement(IndexToDelete, students);
 
         //AddElement("PASS_NEW_STUDENT_OBJECT", students);
 
@@ -18,7 +21,16 @@ public class App {
     }
     public static void removeElement(int IndexToDelete, Student[] originalArray){
         //TODO 3: create a new array with a length less than the existing one. For example, if your existing array is students, the new array's size will be students.length - 1
+        Student[] remainingStudents = new Student[4];
         //TODO 4 : use a ‘for loop’ to copy all elements from the existing array to the new array, except for the element at the index you want to remove
+        for (int i = 0; i < originalArray.length; i++) {
+            if(i != IndexToDelete)
+            {
+                remainingStudents[i] = originalArray[i];
+            }
+        }
+            
+        }
         //TODO 5: if needed, add the new array back to your original array variable
         //TODO 6: call printArray method and pass "Remove" and new array.
     }
