@@ -11,38 +11,47 @@ public class App {
         students[3] = new Student(4,"C", 21);
         students[4] = new Student(5,"D", 15);
         // TODO 2: Uncomment the method call once you have completed the mentioned tasks
-        // int IndexToDelete = "PASS_HERE_INDEX_TO_BE_DELETED";
-        // removeElement(IndexToDelete, students);
+        int IndexToDelete = 4;
+        removeElement(IndexToDelete, students);
 
-        //AddElement("PASS_NEW_STUDENT_OBJECT", students);
+        Student pickle = new Student(students[students.length-1].getRollNumber()+1, "Pickle", 33);
 
-        //int IndexToUpdate = "PASS_HERE_INDEX_TO_BE_UPDATED";
-        //updateElement(IndexToUpdate, students);
+        AddElement(pickle, students);
+
+        int IndexToUpdate = 0;
+        updateElement(IndexToUpdate, students);
     }
     public static void removeElement(int IndexToDelete, Student[] originalArray){
         //TODO 3: create a new array with a length less than the existing one. For example, if your existing array is students, the new array's size will be students.length - 1
-        Student[] remainingStudents = new Student[4];
+        Student[] remainingStudents = new Student[originalArray.length-1];
         //TODO 4 : use a ‘for loop’ to copy all elements from the existing array to the new array, except for the element at the index you want to remove
-        for (int i = 0; i < originalArray.length; i++) {
+        for (int i = 0; i < originalArray.length-1; i++) {
             if(i != IndexToDelete)
             {
                 remainingStudents[i] = originalArray[i];
             }
         }
-            
-        }
         //TODO 5: if needed, add the new array back to your original array variable
         //TODO 6: call printArray method and pass "Remove" and new array.
+        printArray("Remove", remainingStudents);
     }
     public static void AddElement(Student newStudent,Student[] originalArray){
         //TODO 7: define a new array with a length of students.length + 1. This ensures there is space for the new element.
+        Student[] moreStudents = new Student[originalArray.length+1];
         // TODO 8: use a ‘for loop’ to copy all elements from the existing students array to the new array. Iterate over each element and assign it to the corresponding index in the new array.
+        System.arraycopy(originalArray, 0, moreStudents, 0, moreStudents.length-1);
         // TODO 9: create a newStudent object and assign it to the last index of the new array, which is newArray[newArray.length - 1].
+        moreStudents[moreStudents.length-1] = newStudent;
         // TODO 10: place these three steps inside the addElement method in your class. printArray("Add",newArray);
+        printArray("Add", moreStudents);
     }
     public static void updateElement(int indexToUpdate, Student[] originalArray){
         // TODO 11: locate the element you need to update. Use the element's index of the array.
         //TODO 12: once you have the index, access the element and update its properties.
+        Student updateStudent = originalArray[indexToUpdate];
+        updateStudent.setAge(20);
+        updateStudent.setName("kyle");
+        
         // Use the ‘setter’ method in the Student class to change values like name, age, or ID.
         printArray("Update",originalArray);
     }
@@ -50,8 +59,16 @@ public class App {
        /* TODO 13: include a print statement to indicate the current action being performed,
            such as ‘Removing student’, ‘Adding student’, or ‘Updating student’
         */
-       // TODO 14: use a ‘for loop’ to go through each element in the array.
-       // TODO 15: within the loop, use the ‘getter’ method to fetch each student's details and print them using the student object.
+        System.out.println("We will "+ message + " a student");
+        // TODO 14: use a ‘for loop’ to go through each element in the array.
+        for (int idx = 0; idx < students.length; idx++) 
+        {
+            Student elem = students[idx];
+            // TODO 15: within the loop, use the ‘getter’ method to fetch each student's details and print them using the student object.
+            System.out.print("Student Number: " + elem.getRollNumber());
+            System.out.print(" Name: " + elem.getName() );
+            System.out.println(" Age: " + elem.getAge());
+       }
 
     }
 }
